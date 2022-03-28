@@ -12,7 +12,17 @@ usersRouter.post('/', async (request, response) => {
 
     const user = await createUser.execute({ name, email, password });
 
-    return response.json(user);
+    // delete user.password;
+    // Com a atualização do TypeScript, isso se faz necessário
+    const userWithoutPassword = {
+      id: user.id,
+      name: user.name,
+      email: user.email,
+      created_at: user.created_at,
+      updated_at: user.updated_at,
+    };
+
+    return response.json(userWithoutPassword);
   } catch (err) {
     return response.status(400).json({ message: err.message });
   }
