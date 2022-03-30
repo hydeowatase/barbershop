@@ -1,0 +1,25 @@
+FROM node
+
+WORKDIR /app
+
+COPY . .
+#RUN yarn install
+#RUN yarn build
+# RUN npm install
+# RUN npm run build
+
+# COPY package*.json ./
+# COPY dist ./dist
+# COPY ormconfig.json ./ormconfig.json
+
+RUN npm install
+RUN npm run build
+
+# RUN npm install
+# RUN yarn config set "strict-ssl" false -g
+
+EXPOSE 3333
+
+# CMD ["npm run", "start:docker"]
+
+CMD npm run start:docker
