@@ -12,7 +12,6 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-/* eslint-disable camelcase */
 const date_fns_1 = require("date-fns");
 const typeorm_1 = require("typeorm");
 const AppError_1 = __importDefault(require("../errors/AppError"));
