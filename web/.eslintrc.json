@@ -27,6 +27,10 @@
     "react-hooks/rules-of-hooks": "error",
     "react-hooks/exhaustive-deps": "warn",
     "react/jsx-props-no-spreading": "off",
+    "@typescript-eslint/no-explicit-any": "off",
+    "@typescript-eslint/no-empty-function": "off",
+    "import/prefer-default-export": "off",
+    "react/require-default-props": "off",
     "react/jsx-filename-extension": [
       1,
       {
