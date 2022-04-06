@@ -14,6 +14,7 @@ interface SignInCreadencials {
 interface AuthContexData {
   user: object;
   signIn(credencials: SignInCreadencials): Promise<void>;
+  signOut(): void;
 }
 
 const AuthContex = createContext<AuthContexData>({} as AuthContexData);
@@ -44,8 +45,15 @@ const AuthProvider: React.FC = ({ children }) => {
     setData({ token, user: userWithoutPassword });
   }, []);
 
+  const signOut = useCallback(() => {
+    localStorage.removeItem('@Barbershop:token');
+    localStorage.removeItem('@Barbershop:user');
+
+    setData({} as AuthState);
+  }, []);
+
   return (
-    <AuthContex.Provider value={{ user: data.user, signIn }}>
+    <AuthContex.Provider value={{ user: data.user, signIn, signOut }}>
       {children}
     </AuthContex.Provider>
   );
