@@ -4,11 +4,11 @@ import express, { Request, Response, NextFunction } from 'express';
 import cors from 'cors';
 import 'express-async-errors';
 
-import routes from '@shared/infra/http/routes';
 import uploadConfig from '@config/upload';
 import AppError from '@shared/errors/AppError';
+import routes from '@shared/infra/http/routes';
 
-import '../typeorm';
+import '@shared/infra/typeorm';
 
 const app = express();
 
@@ -20,8 +20,8 @@ app.use(routes);
 app.use((err: Error, request: Request, response: Response, _: NextFunction) => {
   if (err instanceof AppError) {
     return response.status(err.statusCode).json({
-      status: 'error',
-      message: 'Internal server error',
+      status: err.name,
+      message: err.message,
     });
   }
 
@@ -29,7 +29,7 @@ app.use((err: Error, request: Request, response: Response, _: NextFunction) => {
 
   return response.status(500).json({
     status: 'error',
-    message: err.message,
+    message: 'Internal server error',
   });
 });
 
