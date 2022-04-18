@@ -1,4 +1,5 @@
 import { startOfHour } from 'date-fns';
+import { injectable, inject } from 'tsyringe';
 
 import AppError from '@shared/errors/AppError';
 
@@ -14,8 +15,12 @@ import ICreateAppointmentDTO from '../dtos/ICreateAppointmentDTO';
 // This Service will depend of repository abstraction rather than relying directly on the repository.
 // The solid principle called "Dependency Inversion" a class should depend on abstractions rather than implementations
 
+@injectable()
 class CreateAppointmentService {
-  constructor(private appointmentsRepository: IAppointmentsRepository) {}
+  constructor(
+    @inject('AppointmentsRepository')
+    private appointmentsRepository: IAppointmentsRepository,
+  ) {}
 
   public async execute({
     provider_id,
