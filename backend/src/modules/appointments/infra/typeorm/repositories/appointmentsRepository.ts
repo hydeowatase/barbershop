@@ -1,6 +1,6 @@
 import { getRepository, Repository } from 'typeorm';
 
-import IAppointmentsRepositorie from '@modules/appointments/repositories/IAppointmentsRepository';
+import IAppointmentsRepository from '@modules/appointments/repositories/IAppointmentsRepository';
 
 import ICreateAppointmentDTO from '@modules/appointments/dtos/ICreateAppointmentDTO';
 
@@ -14,7 +14,7 @@ import Appointment from '@modules/appointments/infra/typeorm/entities/Appointmen
 
 // Camadas onde há integração com bibliotecas, banco de dados etc deve ter a possibilidade de se fazer substituições dessas integrações
 
-class AppointmentsRepository implements IAppointmentsRepositorie {
+class AppointmentsRepository implements IAppointmentsRepository {
   private ormRepository: Repository<Appointment>;
 
   constructor() {
