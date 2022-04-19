@@ -1,5 +1,7 @@
 import { uuid } from 'uuidv4';
 
+import { isEqual } from 'date-fns';
+
 import IAppointmentsRepository from '@modules/appointments/repositories/IAppointmentsRepository';
 
 import ICreateAppointmentDTO from '@modules/appointments/dtos/ICreateAppointmentDTO';
@@ -10,8 +12,8 @@ class AppointmentsRepository implements IAppointmentsRepository {
   private appointments: Appointment[] = [];
 
   public async findByDate(parsedDate: Date): Promise<Appointment | undefined> {
-    const findAppointment = this.appointments.find(
-      appoint => appoint.date === parsedDate,
+    const findAppointment = this.appointments.find(appoint =>
+      isEqual(appoint.date, parsedDate),
     );
 
     return findAppointment;
