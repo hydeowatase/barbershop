@@ -1,0 +1,18 @@
+{
+  "type": "postgres",
+  "host": "barbershop-db",
+  "port": 5432,
+  "username": "postgres",
+  "password": "pa$$w0rd",
+  "database": "barbershop",
+  "entities": [
+    "./src/models/*ts",
+    "./dist/models/*js"
+  ],
+  "migrations": [
+    "./src/database/migrations/*ts"
+  ],
+  "cli": {
+    "migrationsDir": "./src/database/migrations/"
+  }
+}

@@ -1,18 +1,18 @@
 {
   "type": "postgres",
-  "host": "barbershop-db",
+  "host": "localhost",
   "port": 5432,
   "username": "postgres",
   "password": "pa$$w0rd",
   "database": "barbershop",
   "entities": [
-    "./src/models/*ts",
-    "./dist/models/*js"
+    "./src/modules/**/infra/typeorm/entities/*.ts",
+    "./dist/modules/**/infra/typeorm/entities/*.ts"
   ],
   "migrations": [
-    "./src/database/migrations/*ts"
+    "./src/shared/infra/typeorm/migrations/*ts"
   ],
   "cli": {
-    "migrationsDir": "./src/database/migrations/"
+    "migrationsDir": "./src/shared/infra/typeorm/migrations/"
   }
 }
