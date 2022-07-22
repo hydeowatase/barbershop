@@ -1,6 +1,6 @@
 # barbershop
 A fullstack application developed with NodeJS, ReactJS and React Native.
-
+     
 # Mapping functionalities
 # Password recovery
 **RF**
@@ -31,8 +31,18 @@ To update their password, the user must confirm the new password.
 
 # Provider's panel
 **RF**
+The user should be able to list their own appointments of a specific day
+The provider must receiver a notification when an appointment is created
+The provider should be able to visualize all unread notifications
+
 **RNF**
+The appointments of the day of a provider must be storaged in cache 
+The provider's notifications must be storage on Mongo DB 
+The provider's notification must be sent in real time using Socket.IO 
+
 **RN**
+The notification must have status, "readed" and "unread", that provider can control
+
 
 # Appointment Service schedule
 **RF**
@@ -42,6 +52,8 @@ The user should be able to list a provider's available hours of specific day.
 The user should be able to create an appointment with a provider.
 
 **RNF**
+The providers list must be storaged in cache
+When a new provider is registered the cache must be clean 
 
 **RN**
 Each appointment must least at most an hour.
