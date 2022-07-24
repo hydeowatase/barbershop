@@ -17,6 +17,7 @@ import ICreateAppointmentDTO from '../dtos/ICreateAppointmentDTO';
 
 @injectable()
 class CreateAppointmentService {
+  // This injection is controled by container, see the file @shared/container/index.ts
   constructor(
     @inject('AppointmentsRepository')
     private appointmentsRepository: IAppointmentsRepository,

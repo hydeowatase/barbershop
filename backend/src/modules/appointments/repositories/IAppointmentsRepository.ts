@@ -3,8 +3,8 @@ import Appointment from '@modules/appointments/infra/typeorm/entities/Appointmen
 import ICreateAppointmentDTO from '@modules/appointments/dtos/ICreateAppointmentDTO';
 
 interface IAppointmentsRepositorie {
-  create(data: ICreateAppointmentDTO): Promise<Appointment>;
   findByDate(date: Date): Promise<Appointment | undefined>;
+  create(data: ICreateAppointmentDTO): Promise<Appointment>;
 }
 
 export default IAppointmentsRepositorie;
