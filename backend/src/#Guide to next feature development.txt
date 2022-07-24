@@ -1,0 +1,5 @@
+# Feature Reset and recover Password
+1 - Routes and controllers
+2 - Tokens repository with (TypeORM)
+3 - Provider for send e-mail service (DEV)
+4 - Test all
