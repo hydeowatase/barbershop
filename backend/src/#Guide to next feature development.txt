@@ -1,5 +1,7 @@
 # Feature Reset and recover Password
 1 - Routes and controllers
 2 - Tokens repository with (TypeORM)
-3 - Provider for send e-mail service (DEV)
-4 - Test all
+3 - Create Tokens Migration
+4 - Provider for send e-mail service (DEV)
+5 - Register providers on container
+6 - Test all
