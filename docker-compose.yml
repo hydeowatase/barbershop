@@ -1,0 +1,16 @@
+version: '3'
+
+services:
+  db-service:
+    image: postgres
+    environment:
+      POSTGRES_DB: barbershop
+      POSTGRES_USER: "admin"
+      POSTGRES_PASSWORD: "abc123"
+    ports:
+      - "5432:5432"
+    volumes:
+      - db:/var/lib/postgresql/data
+volumes:
+  db:
+    driver: local

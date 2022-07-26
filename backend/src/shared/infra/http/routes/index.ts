@@ -10,7 +10,6 @@ routes.use('/appointments', appointmentsRouter);
 routes.use('/users', usersRouter);
 routes.use('/sessions', sessionsRouter);
 
-routes.use('/sessions', passwordRouter);
-routes.use('/sessions', passwordRouter);
+routes.use('/password', passwordRouter);
 
 export default routes;
