@@ -1,7 +1,8 @@
 import { injectable, inject } from 'tsyringe';
+import path from 'path';
 
 import AppError from '@shared/errors/AppError';
-import IMailProvider from '@shared/container/providers/IMailProvider/models/IMailProvider'
+import IMailProvider from '@shared/container/providers/MailProvider/models/IMailProvider'
 import IUsersRepository from '@modules/users/repositories/IUsersRepository';
 import IUserTokensRepository from '@modules/users/repositories/IUserTokensRepository';
 
@@ -31,7 +32,22 @@ class SendForgotPasswordEmailService {
 
         const { token } = await this.userTokensRepository.generate(user.id);
 
-        await this.mailProvider.sendMail(email, `Password recovery request received with success!. Token: ${token}`);
+        const forgotPasswordTemplate = path.resolve(__dirname, '..', 'views', 'forgot_password.hbs')
+
+        await this.mailProvider.sendMail({
+            to: {
+                name: user.name,
+                email: user.email
+            },
+            subject: '[Barbershop] Password Recover',
+            templateData: {
+                file: forgotPasswordTemplate,
+                variables: {
+                    name: user.name,
+                    link: `http://localhost:3000/reset_password:token=${token}`,
+                }
+            }
+        });
     }
 }
 

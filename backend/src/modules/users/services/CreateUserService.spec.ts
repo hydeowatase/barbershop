@@ -4,12 +4,16 @@ import FakeUsersRespository from '@modules/users/repositories/fakes/FakeUsersRes
 import FakeHashProvider from '@modules/users/providers/HashProvider/fakes/FakeHashProvider';
 import CreateUserService from '@modules/users/services/CreateUserService';
 
+let fakeUsersRespository: FakeUsersRespository;
+let fakeHashProvider: FakeHashProvider;
+let createUserService: CreateUserService;
+
 describe('CreateUser', () => {
   it('should be able to create a new user', async () => {
-    const fakeUsersRespository = new FakeUsersRespository();
-    const fakeHashProvider = new FakeHashProvider();
+    fakeUsersRespository = new FakeUsersRespository();
+    fakeHashProvider = new FakeHashProvider();
 
-    const createUserService = new CreateUserService(
+    createUserService = new CreateUserService(
       fakeUsersRespository,
       fakeHashProvider,
     );
@@ -24,10 +28,10 @@ describe('CreateUser', () => {
   });
 
   it('should not be able to create a user with an email that have been used', async () => {
-    const fakeUsersRespository = new FakeUsersRespository();
-    const fakeHashProvider = new FakeHashProvider();
+    fakeUsersRespository = new FakeUsersRespository();
+    fakeHashProvider = new FakeHashProvider();
 
-    const createUserService = new CreateUserService(
+    createUserService = new CreateUserService(
       fakeUsersRespository,
       fakeHashProvider,
     );
