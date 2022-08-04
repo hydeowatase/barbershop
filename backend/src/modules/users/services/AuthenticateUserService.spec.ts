@@ -12,7 +12,7 @@ let authenticateUserService: AuthenticateUserService;
 
 
 describe('AuthenticateUser', () => {
-  it('should be able to authenticate', async () => {
+  beforeEach(() => {
     fakeUsersRespository = new FakeUsersRespository();
     fakeHashProvider = new FakeHashProvider();
 
@@ -24,7 +24,10 @@ describe('AuthenticateUser', () => {
       fakeUsersRespository,
       fakeHashProvider,
     );
+  });
 
+
+  it('should be able to authenticate', async () => {
     const user = await createUserService.execute({
       name: 'John Doe',
       email: 'johndoe@gmail.com',
@@ -41,15 +44,7 @@ describe('AuthenticateUser', () => {
   });
 
   it('should not be able to authenticate with non existing user', async () => {
-    fakeUsersRespository = new FakeUsersRespository();
-    fakeHashProvider = new FakeHashProvider();
-
-    authenticateUserService = new AuthenticateUserService(
-      fakeUsersRespository,
-      fakeHashProvider,
-    );
-
-    expect(
+    await expect(
       authenticateUserService.execute({
         email: 'johndoe@gmail.com',
         password: 'abc123',
@@ -58,26 +53,13 @@ describe('AuthenticateUser', () => {
   });
 
   it('should not be able to authenticate with wrong user password', async () => {
-    fakeUsersRespository = new FakeUsersRespository();
-    fakeHashProvider = new FakeHashProvider();
-
-    createUserService = new CreateUserService(
-      fakeUsersRespository,
-      fakeHashProvider,
-    );
-
-    authenticateUserService = new AuthenticateUserService(
-      fakeUsersRespository,
-      fakeHashProvider,
-    );
-
     await createUserService.execute({
       name: 'John Doe',
       email: 'johndoe@gmail.com',
       password: 'abc123',
     });
 
-    expect(
+    await expect(
       authenticateUserService.execute({
         email: 'johndoe@gmail.com',
         password: 'wrong-password',

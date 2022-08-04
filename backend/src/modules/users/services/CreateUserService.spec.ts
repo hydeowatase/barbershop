@@ -9,7 +9,7 @@ let fakeHashProvider: FakeHashProvider;
 let createUserService: CreateUserService;
 
 describe('CreateUser', () => {
-  it('should be able to create a new user', async () => {
+  beforeEach(() => {
     fakeUsersRespository = new FakeUsersRespository();
     fakeHashProvider = new FakeHashProvider();
 
@@ -17,7 +17,9 @@ describe('CreateUser', () => {
       fakeUsersRespository,
       fakeHashProvider,
     );
+  });
 
+  it('should be able to create a new user', async () => {
     const user = await createUserService.execute({
       name: 'John Doe',
       email: 'johndoe@gmail.com',
@@ -28,21 +30,13 @@ describe('CreateUser', () => {
   });
 
   it('should not be able to create a user with an email that have been used', async () => {
-    fakeUsersRespository = new FakeUsersRespository();
-    fakeHashProvider = new FakeHashProvider();
-
-    createUserService = new CreateUserService(
-      fakeUsersRespository,
-      fakeHashProvider,
-    );
-
     await createUserService.execute({
       name: 'Yohany Doe',
       email: 'yohanydue@gmail.com',
       password: 'abc123',
     });
 
-    expect(
+    await expect(
       createUserService.execute({
         name: 'Mary Doe',
         email: 'yohanydue@gmail.com',
