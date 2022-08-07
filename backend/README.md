@@ -50,14 +50,14 @@
 - The user must be able to list all registered providers/staffs;
 - The user must be able to list a provider´s schedule with a minimum available day;
 - The user must be able to list all available hours in a day from a specified provider;
-- The user must be able to make an appointment with a pprovider;
+- The user must be able to make an appointment with a provider;
 
 **RNF (Non-Functional Requirements)**
-- The list of providers must becached to avoid loss of performance
+- The list of providers must be storaged in cached to avoid loss of performance
 
 **RN (Business Rules)**
 
-- Each appointment must last one hour;
+- Each appointment must least one hour;
 - The appointments must be available between 8am and 6pm (The first at 8am and the last at 5pm);
 - An appointment must not exceed from 6pm;
 - The user cannot make an appointment that has already acheduled;
