@@ -40,13 +40,4 @@ describe('ListProviders', () => {
         expect(ṕroviders).toEqual([user1, user2])
 
     });
-
-    // it('should not be able to show the profile of non-existing user', async () => {
-    //     expect(
-    //         listProvidersService.execute({
-    //             user_id: 'non-existing-user-id',
-    //         })
-    //     ).rejects.toBeInstanceOf(AppError);
-
-    // });
 });
