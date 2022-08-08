@@ -62,3 +62,8 @@
 - The user cannot make an appointment with himself as provider; OK
 - Each appointment must least one hour; - OK
 - The user cannot make an appointment that has already acheduled; - OK
+
+# Mongo DB configuration
+docker run --name mongodb_barbershop -p 27017:27017 -d -t mongo
+
+mongodb compass community
