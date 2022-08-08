@@ -58,7 +58,7 @@
 **RN (Business Rules)**
 
 - The appointments must be available between 8am and 6pm (The first at 8am and the last at 5pm);
-- The user cannot make an appointment at a past time;
-- The user cannot make an appointment with himself;
+- The user cannot make an appointment at a past time; - OK
+- The user cannot make an appointment with himself as provider; OK
 - Each appointment must least one hour; - OK
 - The user cannot make an appointment that has already acheduled; - OK
