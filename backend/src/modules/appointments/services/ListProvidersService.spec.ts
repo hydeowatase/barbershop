@@ -40,4 +40,19 @@ describe('ListProviders', () => {
         expect(ṕroviders).toEqual([user1, user2])
 
     });
+
+    it('should not be able to list the providers with wrong user_id', async () => {
+        const loggedUser = await fakeUsersRespository.create({
+            name: 'John Qua',
+            email: 'johndoe003@gmail.com',
+            password: 'abc123',
+        });
+
+        expect(
+            listProvidersService.execute({
+                user_id: loggedUser.id
+            })
+        ).rejects.toBeInstanceOf(AppError);
+
+    });
 });

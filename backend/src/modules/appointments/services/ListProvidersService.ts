@@ -19,8 +19,8 @@ class ListProvidersService {
     public async execute({ user_id }: IRequest): Promise<User[]> {
         const providers = await this.usersRepository.findAllProviders({ except_user_id: user_id });
 
-        if (!providers) {
-            throw new AppError('User not found.');
+        if (!providers || providers.length < 1) {
+            throw new AppError('There are no providers registered.');
         }
 
         return providers;
