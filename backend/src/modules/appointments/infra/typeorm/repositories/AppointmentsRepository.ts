@@ -54,9 +54,9 @@ class AppointmentsRepository implements IAppointmentsRepository {
   public async findAllInDayFromProvider(
     {
       provider_id,
-      day,
-      month,
       year,
+      month,
+      day,
     }: IFindAllInDayFromProviderDTO): Promise<Appointment[]> {
 
     const parsedDay = String(day).padStart(2, '0');

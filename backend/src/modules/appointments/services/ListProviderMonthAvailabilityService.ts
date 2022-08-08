@@ -3,7 +3,6 @@ import { injectable, inject } from 'tsyringe';
 import { getDaysInMonth, getDate } from 'date-fns';
 
 import IAppointmentsRepository from '@modules/appointments/repositories/IAppointmentsRepository';
-import { Index } from 'typeorm';
 
 interface IRequest {
     provider_id: string;
