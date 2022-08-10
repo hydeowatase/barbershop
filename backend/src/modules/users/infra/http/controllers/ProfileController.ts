@@ -4,6 +4,8 @@ import { container } from 'tsyringe';
 import UpdateProfileService from '@modules/users/services/UpdateProfileService';
 import ShowProfileService from '@modules/users/services/ShowProfileService';
 
+import { instanceToInstance } from 'class-transformer';
+
 class ProfileController {
     public async show(request: Request, response: Response): Promise<Response> {
         const user_id = request.user.id
@@ -12,15 +14,7 @@ class ProfileController {
 
         const user = await showProfileService.execute({ user_id });
 
-        const userWithoutPassword = {
-            id: user.id,
-            name: user.name,
-            email: user.email,
-            created_at: user.created_at,
-            updated_at: user.updated_at
-        };
-
-        return response.json(userWithoutPassword);
+        return response.json(instanceToInstance(user));
     }
 
 
@@ -38,17 +32,7 @@ class ProfileController {
             password
         });
 
-        // delete user.password;
-        // Com a atualização do TypeScript, isso se faz necessário
-        const userWithoutPassword = {
-            id: updatedProfile.id,
-            name: updatedProfile.name,
-            email: updatedProfile.email,
-            created_at: updatedProfile.created_at,
-            updated_at: updatedProfile.updated_at
-        };
-
-        return response.json(userWithoutPassword);
+        return response.json(instanceToInstance(updatedProfile));
     }
 }
 
